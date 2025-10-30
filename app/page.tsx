@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Utensils, Fish, Award, Users, MapPin, Quote, Star, StarHalf, ChevronDown } from 'lucide-react'
+import { Utensils, Fish, Award, Users, MapPin, Quote, Star, StarHalf, ChevronDown, Clock, Phone } from 'lucide-react'
 import ScrollHint from './components/ScrollHint'
 
 export default function Home() {
@@ -130,6 +130,117 @@ export default function Home() {
                 <span className="font-semibold">Unser Versprechen</span>
               </div>
               <p className="text-amber-900/80 italic">„Gutes Essen verbindet – wir bringen Vietnam nach München.“</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Visit us preview (contact info on homepage) */}
+      <section id="visit" className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <h3 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Besuche uns</h3>
+            <p className="mt-3 text-amber-900/80">Direkt am Münchner Hauptbahnhof – schnell erreichbar.</p>
+          </div>
+          
+
+          {/* Map and reviews (match contact page layout) */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            {/* Map */}
+            <div className="flex flex-col gap-5">
+              <div className="rounded-3xl border border-red-400/50 ring-1 ring-red-300/40 bg-white/40 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(220,38,38,0.18)] p-3 overflow-visible">
+                <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden">
+                <iframe
+                  title="AsiaViet Standort"
+                  className="absolute inset-0 w-full h-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Bayerstraße%2015,%2080335%20München&output=embed"
+                />
+                </div>
+              </div>
+            </div>
+            {/* Reviews */}
+            <div className="flex flex-col gap-5">
+              <div className="rounded-3xl border border-amber-400/50 ring-1 ring-amber-300/40 bg-white/40 backdrop-blur-2xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(245,158,11,0.18)]">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-amber-900/70">Kundenstimmen</div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-5 h-5" />
+                    <Star className="w-5 h-5" />
+                    <Star className="w-5 h-5" />
+                    <Star className="w-5 h-5" />
+                    <StarHalf className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm text-amber-900/90 font-medium">4.6/5 · über 600 Bewertungen</span>
+                </div>
+                <div className="relative h-56 overflow-hidden">
+                  <ul className="animate-scrollY space-y-3 text-amber-950 text-[15px] leading-relaxed">
+                    <li className="rounded-2xl bg-white/80 border border-white/60 px-4 py-3 shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" />
+                        <div className="min-w-0">
+                          <div className="text-amber-950 font-semibold">Anna K.</div>
+                          <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
+                          <p className="mt-2 text-amber-950">Beste Pho in München. Brühe aromatisch, Portion groß.</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="rounded-2xl bg-white/80 border border-white/60 px-4 py-3 shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" />
+                        <div className="min-w-0">
+                          <div className="text-amber-950 font-semibold">Marcel R.</div>
+                          <div className="text-[11px] text-amber-900/70">letzte Woche</div>
+                          <p className="mt-2 text-amber-950">Sushi sehr frisch, Nigiri könnten etwas größer sein.</p>
+                        </div>
+                      </div>
+                    </li>
+                    {/* duplicate for seamless loop */}
+                    <li className="rounded-2xl bg-white/75 border border-white/60 px-4 py-3 shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" />
+                        <div className="min-w-0">
+                          <div className="text-amber-900 font-semibold">Anna K.</div>
+                          <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
+                          <p className="mt-2 text-amber-900">Beste Pho in München. Brühe aromatisch, Portion groß.</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="rounded-2xl bg-white/75 border border-white/60 px-4 py-3 shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" />
+                        <div className="min-w-0">
+                          <div className="text-amber-900 font-semibold">Marcel R.</div>
+                          <div className="text-[11px] text-amber-900/70">letzte Woche</div>
+                          <p className="mt-2 text-amber-900">Sushi sehr frisch, Nigiri könnten etwas größer sein.</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Info cards under map/reviews */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
+              <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
+                <MapPin className="w-6 h-6" aria-hidden="true" />
+                <span className="truncate" title="Bayerstraße 15, 80335 München">Bayerstraße 15, 80335 München</span>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
+              <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
+                <Clock className="w-6 h-6" aria-hidden="true" />
+                <span className="whitespace-nowrap" title="11:00–22:00 Uhr">Täglich 11:00–22:00 Uhr</span>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
+              <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
+                <Phone className="w-6 h-6" aria-hidden="true" />
+                <span className="whitespace-nowrap" title="089 59068703">089 59068703</span>
+              </div>
             </div>
           </div>
         </div>

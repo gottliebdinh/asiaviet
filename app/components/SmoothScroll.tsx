@@ -12,8 +12,8 @@ export default function SmoothScroll() {
       e.preventDefault()
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
       const delta = e.deltaY
-      // Reduce scroll speed stronger for a more luxurious feel
-      targetScrollYRef.current = Math.max(0, Math.min(maxScroll, targetScrollYRef.current + delta * 0.3))
+      // Slightly faster scroll multiplier
+      targetScrollYRef.current = Math.max(0, Math.min(maxScroll, targetScrollYRef.current + delta * 0.6))
 
       if (!isAnimatingRef.current) {
         isAnimatingRef.current = true
@@ -32,8 +32,8 @@ export default function SmoothScroll() {
 
     const animate = () => {
       const diff = targetScrollYRef.current - currentScrollYRef.current
-      // Ease towards the target more gently
-      currentScrollYRef.current += diff * 0.08
+      // Quicker ease towards the target
+      currentScrollYRef.current += diff * 0.16
       window.scrollTo(0, currentScrollYRef.current)
 
       if (Math.abs(diff) > 0.5) {
