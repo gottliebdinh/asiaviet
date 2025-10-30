@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['var(--font-playfair)', 'serif'],
+        asian: ['var(--font-noto)', 'serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
@@ -25,6 +25,20 @@ const config: Config = {
           800: '#991b1b',
           900: '#7f1d1d',
         },
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0.85' },
+          '50%': { transform: 'translateY(6px)', opacity: '1' },
+        },
+        scrollY: {
+          '0%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+      },
+      animation: {
+        float: 'float 2.5s ease-in-out infinite',
+        scrollY: 'scrollY 20s linear infinite',
       },
     },
   },
