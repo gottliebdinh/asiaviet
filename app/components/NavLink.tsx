@@ -29,7 +29,7 @@ export default function NavLink({ href, className = '', children }: Props) {
       }
       // Home: only active when at top (no hash)
       if (href === '/') {
-        return pathname === '/' && (hash === '' || hash === '#')
+        return pathname === '/' && (hash === '' || hash === '#' || hash === '#home')
       }
       // Other routes: exact path match
       return pathname === href

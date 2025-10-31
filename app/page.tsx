@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-4rem)] flex items-center py-20">
+      <section id="home" className="relative min-h-[calc(100vh-4rem)] flex items-center py-20">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left: Logo, Title, CTA */}
-          <div className="text-left">
+          <div className="text-left animate-fadeUp [animation-delay:100ms]">
             <div className="flex items-center gap-4 mb-4">
               <Image src="/logo.png" alt="AsiaViet Logo" width={160} height={60} className="h-12 w-auto drop-shadow" priority />
             </div>
@@ -31,7 +31,7 @@ export default function Home() {
               </div>
               <span className="text-sm font-medium">4.6/5 · über 600 Bewertungen</span>
             </div>
-            <div className="mt-6">
+            <div className="mt-6 animate-fadeUp [animation-delay:320ms]">
               <button className="group relative inline-flex items-center gap-3 px-8 py-3 overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white rounded-2xl text-lg font-semibold shadow-2xl hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-500 border border-white/30 hover:border-white/50">
                 Speisekarte ansehen
                 <svg className="w-5 h-5 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
 
           {/* Right: Decorative Glass Card */}
-          <div className="relative">
+          <div className="relative animate-scaleIn [animation-delay:480ms]">
             <div className="rounded-3xl border border-white/40 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-8">
               <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-10 w-64 h-64 bg-gradient-to-br from-red-400/60 via-orange-300/60 to-yellow-300/60 rounded-full blur-3xl"></div>
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24">
+      <section id="about" className="py-24 scroll-mt-28">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Unsere Geschichte</h2>
@@ -136,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Visit us preview (contact info on homepage) */}
-      <section id="visit" className="py-16">
+      <section id="visit" className="py-16 scroll-mt-28">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
             <h3 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Besuche uns</h3>
@@ -192,7 +192,7 @@ export default function Home() {
                         <div className="min-w-0">
                           <div className="text-amber-950 font-semibold">Marcel R.</div>
                           <div className="text-[11px] text-amber-900/70">letzte Woche</div>
-                          <p className="mt-2 text-amber-950">Sushi sehr frisch, Nigiri könnten etwas größer sein.</p>
+                          <p className="mt-2 text-amber-950">Sushi sehr frisch, Nigiri ist der Hammer kann ich nur empfehle!.</p>
                         </div>
                       </div>
                     </li>
@@ -211,9 +211,9 @@ export default function Home() {
                       <div className="flex items-start gap-3">
                         <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" />
                         <div className="min-w-0">
-                          <div className="text-amber-900 font-semibold">Marcel R.</div>
+                          <div className="text-amber-900 font-semibold">Gottlieb D.</div>
                           <div className="text-[11px] text-amber-900/70">letzte Woche</div>
-                          <p className="mt-2 text-amber-900">Sushi sehr frisch, Nigiri könnten etwas größer sein.</p>
+                          <p className="mt-2 text-amber-900">So ein liebes Personal! Ich komme sehr gerne wieder!.</p>
                         </div>
                       </div>
                     </li>

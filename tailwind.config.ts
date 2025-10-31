@@ -35,10 +35,25 @@ const config: Config = {
           '0%': { transform: 'translateY(0%)' },
           '100%': { transform: 'translateY(-50%)' },
         },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.96)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
       },
       animation: {
         float: 'float 2.5s ease-in-out infinite',
         scrollY: 'scrollY 20s linear infinite',
+        fadeUp: 'fadeUp 1100ms cubic-bezier(0.19, 1, 0.22, 1) both',
+        fadeIn: 'fadeIn 1000ms cubic-bezier(0.19, 1, 0.22, 1) both',
+        scaleIn: 'scaleIn 1100ms cubic-bezier(0.19, 1, 0.22, 1) both',
       },
     },
   },
