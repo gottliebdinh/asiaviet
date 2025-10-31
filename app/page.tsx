@@ -72,8 +72,17 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 scroll-mt-28">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="about" className="relative py-24 scroll-mt-28">
+        {/* Vietnam map background - fades in/out with section */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
+          <Image 
+            src="/vietnam.png" 
+            alt="" 
+            fill
+            className="object-contain object-center"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Unsere Geschichte</h2>
             <p className="mt-4 text-lg text-amber-900/80 max-w-3xl mx-auto">
