@@ -5,6 +5,30 @@ import ScrollHint from './components/ScrollHint'
 export default function Home() {
   return (
     <main className="flex flex-col">
+      {/* Vertical text decorations */}
+      <div className="hidden lg:block fixed left-16 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
+        <div className="text-amber-900/70 text-2xl font-semibold leading-snug flex flex-col items-center">
+          <span>X</span>
+          <span>i</span>
+          <span>n</span>
+          <span>&nbsp;</span>
+          <span>c</span>
+          <span>h</span>
+          <span>à</span>
+          <span>o</span>
+        </div>
+      </div>
+      <div className="hidden lg:block fixed right-16 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:450ms]">
+        <div className="text-amber-900/70 text-2xl font-semibold leading-snug flex flex-col items-center">
+          <span>C</span>
+          <span>ả</span>
+          <span>m</span>
+          <span>&nbsp;</span>
+          <span>ơ</span>
+          <span>n</span>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section id="home" className="relative min-h-[calc(100vh-4rem)] flex items-center py-20">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">

@@ -47,6 +47,10 @@ const config: Config = {
           '0%': { opacity: '0', transform: 'scale(0.96)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
+        slideDown: {
+          '0%': { opacity: '0', transform: 'translateY(-100%)' },
+          '100%': { opacity: '1', transform: 'translateY(-50%)' },
+        },
       },
       animation: {
         float: 'float 2.5s ease-in-out infinite',
@@ -54,6 +58,7 @@ const config: Config = {
         fadeUp: 'fadeUp 1100ms cubic-bezier(0.19, 1, 0.22, 1) both',
         fadeIn: 'fadeIn 1000ms cubic-bezier(0.19, 1, 0.22, 1) both',
         scaleIn: 'scaleIn 1100ms cubic-bezier(0.19, 1, 0.22, 1) both',
+        slideDown: 'slideDown 1200ms cubic-bezier(0.19, 1, 0.22, 1) both',
       },
     },
   },
