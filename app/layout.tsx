@@ -23,7 +23,9 @@ export const metadata: Metadata = {
   title: 'AsiaViet Restaurant',
   description: 'Authentic Vietnamese and Asian cuisine',
   icons: {
-    icon: '/logo.png',
+    icon: [
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+    ],
     apple: '/logo.png',
   },
 }
@@ -43,12 +45,12 @@ export default function RootLayout({
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0ibW9uZ29saWFuIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiMwMDAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjbW9uZ29saWFuKSIvPjwvc3ZnPg==')]"></div>
         </div>
         {/* Floating Top Navigation */}
-        <header className="fixed top-4 inset-x-0 z-50 pointer-events-none">
-          <nav className="pointer-events-auto relative mx-auto w-fit px-6 h-20 flex items-center rounded-[56px] bg-white/60 backdrop-blur-xl border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)] animate-scaleIn [animation-delay:160ms] [animation-duration:1200ms] [animation-timing-function:cubic-bezier(0.2,0.8,0.2,1)]">
+        <header className="fixed top-4 xl:top-5 2xl:top-6 inset-x-0 z-50 pointer-events-none">
+          <nav className="pointer-events-auto relative mx-auto w-fit px-6 xl:px-7 2xl:px-8 h-20 xl:h-22 2xl:h-24 flex items-center rounded-[56px] xl:rounded-[64px] 2xl:rounded-[72px] bg-white/60 backdrop-blur-xl border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)] animate-scaleIn [animation-delay:160ms] [animation-duration:1200ms] [animation-timing-function:cubic-bezier(0.2,0.8,0.2,1)]">
             <Link href="/" className="flex items-center">
-              <Image src="/logo.png" alt="AsiaViet Logo" width={140} height={48} className="h-10 w-auto" priority />
+              <Image src="/logo.png" alt="AsiaViet Logo" width={140} height={48} className="h-10 xl:h-11 2xl:h-12 w-auto" priority />
             </Link>
-            <div className="ml-6 flex items-center gap-10 text-[17px] font-semibold tracking-wide">
+            <div className="ml-6 xl:ml-7 2xl:ml-8 flex items-center gap-10 xl:gap-11 2xl:gap-12 text-[17px] xl:text-[18px] 2xl:text-[19px] font-semibold tracking-wide">
               <NavLink href="/">Home</NavLink>
               <NavLink href="/#about">Unsere Geschichte</NavLink>
               <NavLink href="/#visit">Besuche uns</NavLink>

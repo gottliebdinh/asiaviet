@@ -5,9 +5,9 @@ import ScrollHint from './components/ScrollHint'
 export default function Home() {
   return (
     <main className="flex flex-col">
-      {/* Vertical text decorations */}
-      <div className="hidden lg:block fixed left-16 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
-        <div className="text-amber-900/70 text-2xl font-semibold leading-snug flex flex-col items-center">
+      {/* Vertical text decorations - only show on screens with enough horizontal space */}
+      <div className="hidden xl:block fixed left-16 2xl:left-24 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
+        <div className="text-amber-900/70 text-2xl 2xl:text-3xl font-semibold leading-snug flex flex-col items-center">
           <span>X</span>
           <span>i</span>
           <span>n</span>
@@ -18,8 +18,8 @@ export default function Home() {
           <span>o</span>
         </div>
       </div>
-      <div className="hidden lg:block fixed right-16 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:450ms]">
-        <div className="text-amber-900/70 text-2xl font-semibold leading-snug flex flex-col items-center">
+      <div className="hidden xl:block fixed right-16 2xl:right-24 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:450ms]">
+        <div className="text-amber-900/70 text-2xl 2xl:text-3xl font-semibold leading-snug flex flex-col items-center">
           <span>C</span>
           <span>ả</span>
           <span>m</span>
@@ -31,34 +31,34 @@ export default function Home() {
       
       {/* Hero Section */}
       <section id="home" className="relative min-h-[calc(100vh-4rem)] flex items-center py-20">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+        <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 xl:px-12 2xl:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center w-full">
           {/* Left: Logo, Title, CTA */}
           <div className="text-left animate-fadeUp [animation-delay:100ms]">
             <div className="flex items-center gap-4 mb-4">
               <Image src="/logo.png" alt="AsiaViet Logo" width={160} height={60} className="h-12 w-auto drop-shadow" priority />
             </div>
-            <h1 className="text-5xl md:text-7xl font-asian font-bold leading-tight">
+            <h1 className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl font-asian font-bold leading-tight">
               <span className="text-red-600 drop-shadow-lg shadow-red-500/50">ASIA</span>{' '}
               <span className="text-yellow-500 drop-shadow-lg shadow-yellow-500/50">VIET</span>
             </h1>
-            <p className="text-lg md:text-xl text-amber-900/80 mt-5 max-w-xl">
+            <p className="text-lg md:text-xl xl:text-2xl 2xl:text-3xl text-amber-900/80 mt-5 max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
               Deine vietnamesische Küche im Herzens München – direkt neben dem Hauptbahnhof. Schnell und lecker.
             </p>
             {/* Rating (moved above CTA) */}
             <div className="mt-6 flex items-center gap-3 text-amber-900">
               <div className="flex items-center">
-                <Star className="w-5 h-5 text-yellow-500" />
-                <Star className="w-5 h-5 text-yellow-500" />
-                <Star className="w-5 h-5 text-yellow-500" />
-                <Star className="w-5 h-5 text-yellow-500" />
-                <StarHalf className="w-5 h-5 text-yellow-500" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
+                <StarHalf className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
               </div>
-              <span className="text-sm font-medium">4.6/5 · über 600 Bewertungen</span>
+              <span className="text-sm xl:text-base 2xl:text-lg font-medium">4.6/5 · über 600 Bewertungen</span>
             </div>
             <div className="mt-6 animate-fadeUp [animation-delay:320ms]">
-              <button className="group relative inline-flex items-center gap-3 px-8 py-3 overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white rounded-2xl text-lg font-semibold shadow-2xl hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-500 border border-white/30 hover:border-white/50">
+              <button className="group relative inline-flex items-center gap-3 px-8 py-3 xl:px-10 xl:py-4 2xl:px-12 2xl:py-5 overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white rounded-2xl text-lg xl:text-xl 2xl:text-2xl font-semibold shadow-2xl hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-500 border border-white/30 hover:border-white/50">
                 Speisekarte ansehen
-                <svg className="w-5 h-5 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 xl:w-6 xl:h-6 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -96,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-24 scroll-mt-28">
+      <section id="about" className="relative py-24 scroll-mt-20">
         {/* Vietnam map background - fades in/out with section */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
           <Image 
@@ -106,63 +106,72 @@ export default function Home() {
             className="object-contain object-center"
           />
         </div>
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 xl:px-12 2xl:px-16 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Unsere Geschichte</h2>
-            <p className="mt-4 text-lg text-amber-900/80 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-amber-900 tracking-tight">Unsere Geschichte</h2>
+            <p className="mt-4 text-lg xl:text-xl 2xl:text-2xl text-amber-900/80 max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto">
               Seit Jahren vereinen wir die Aromen Vietnams mit modernen Einflüssen: authentische Pho, frische Sommerrollen,
               feines Sushi – alles mit Liebe zum Detail, in Familienhand geführt und fußläufig zum Münchner Hauptbahnhof.
             </p>
           </div>
 
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <Utensils className="w-5 h-5" />
-                <span className="font-semibold">Vietnamesische Klassiker</span>
+          {/* Feature Grid - Asymmetric Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 xl:gap-6 2xl:gap-8">
+            {/* Top left card */}
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-2 text-amber-900">
+                <Utensils className="w-5 h-5 xl:w-6 xl:h-6" />
+                <span className="font-semibold xl:text-lg 2xl:text-xl">Vietnamesische Klassiker</span>
               </div>
-              <p className="text-amber-900/80">Pho, Bun, Sommerrollen – traditionell zubereitet, modern serviert.</p>
+              <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Von aromatischer Pho über knusprige Frühlingsrollen bis zu frischen Sommerrollen – unsere vietnamesischen Klassiker werden nach traditionellen Rezepten zubereitet und mit modernem Flair serviert.</p>
+            </div>
+
+            {/* Large Chef Card - Center, spans 2 rows on desktop */}
+            <div className="lg:row-span-2 rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
+              {/* Chef Image - takes 3/4 of card height */}
+              <div className="relative h-56 lg:h-[320px] xl:h-[380px] 2xl:h-[450px] flex-grow">
+                <Image 
+                  src="/chef.png" 
+                  alt="Unsere Chefin" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Familienbetrieb section - takes 1/4 of card height */}
+              <div className="p-4 xl:p-5 2xl:p-6 bg-white/60 backdrop-blur">
+                <div className="flex items-center gap-3 mb-1.5 text-amber-900">
+                  <Users className="w-5 h-5 xl:w-6 xl:h-6" />
+                  <span className="font-semibold xl:text-lg 2xl:text-xl">Familienbetrieb</span>
+                </div>
+                <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Herzlich, bodenständig und persönlich – Gastfreundschaft aus Tradition.</p>
+              </div>
             </div>
             
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <Fish className="w-5 h-5" />
-                <span className="font-semibold">Sushi & Frische</span>
+            {/* Top right card */}
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-2 text-amber-900">
+                <Fish className="w-5 h-5 xl:w-6 xl:h-6" />
+                <span className="font-semibold xl:text-lg 2xl:text-xl">Sushi & Frische</span>
               </div>
-              <p className="text-amber-900/80">Feinste Auswahl an Sushi – frisch, ausgewogen und elegant.</p>
+              <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Feinste Auswahl an Sushi, täglich frisch zubereitet. Von klassischen Nigiri und Maki bis zu kreativen Spezialrollen – jedes Stück wird mit Präzision und Liebe zum Detail gefertigt.</p>
             </div>
 
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <Award className="w-5 h-5" />
-                <span className="font-semibold">Beste Qualität</span>
+            {/* Bottom left card */}
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-2 text-amber-900">
+                <Award className="w-5 h-5 xl:w-6 xl:h-6" />
+                <span className="font-semibold xl:text-lg 2xl:text-xl">Beste Qualität</span>
               </div>
-              <p className="text-amber-900/80">Sorgfältig ausgewählte Zutaten, hohe Standards, liebevolle Zubereitung.</p>
+              <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Wir setzen auf sorgfältig ausgewählte Zutaten, hohe Standards und liebevolle Zubereitung. Qualität steht bei uns an erster Stelle – das schmecken Sie in jedem Bissen.</p>
             </div>
 
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <Users className="w-5 h-5" />
-                <span className="font-semibold">Familienbetrieb</span>
+            {/* Bottom right card */}
+            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-2 text-amber-900">
+                <Quote className="w-5 h-5 xl:w-6 xl:h-6" />
+                <span className="font-semibold xl:text-lg 2xl:text-xl">Unser Versprechen</span>
               </div>
-              <p className="text-amber-900/80">Herzlich, bodenständig und persönlich – Gastfreundschaft aus Tradition.</p>
-            </div>
-
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <MapPin className="w-5 h-5" />
-                <span className="font-semibold">Zentrale Lage</span>
-              </div>
-              <p className="text-amber-900/80">Nur wenige Minuten vom Münchner Hauptbahnhof – ideal erreichbar.</p>
-            </div>
-
-            <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3 text-amber-900">
-                <Quote className="w-5 h-5" />
-                <span className="font-semibold">Unser Versprechen</span>
-              </div>
-              <p className="text-amber-900/80 italic">„Gutes Essen verbindet – wir bringen Vietnam nach München.“</p>
+              <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg italic">&ldquo;Gutes Essen verbindet Menschen und Kulturen. Mit jedem Gericht bringen wir ein Stück Vietnam nach München – authentisch, herzlich und mit Leidenschaft gekocht.&rdquo;</p>
             </div>
           </div>
         </div>
@@ -170,19 +179,19 @@ export default function Home() {
 
       {/* Visit us preview (contact info on homepage) */}
       <section id="visit" className="py-16 scroll-mt-28">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 xl:px-12 2xl:px-16">
           <div className="text-center mb-8">
-            <h3 className="text-4xl md:text-5xl font-bold text-amber-900 tracking-tight">Besuche uns</h3>
-            <p className="mt-3 text-amber-900/80">Direkt am Münchner Hauptbahnhof – schnell erreichbar.</p>
+            <h3 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-amber-900 tracking-tight">Besuche uns</h3>
+            <p className="mt-3 text-lg xl:text-xl 2xl:text-2xl text-amber-900/80">Direkt am Münchner Hauptbahnhof – schnell erreichbar.</p>
           </div>
           
 
           {/* Map and reviews (match contact page layout) */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-10 2xl:gap-12 items-start">
             {/* Map */}
             <div className="flex flex-col gap-5">
-              <div className="rounded-3xl border border-red-400/50 ring-1 ring-red-300/40 bg-white/40 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(220,38,38,0.18)] p-3 overflow-visible">
-                <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden">
+              <div className="rounded-3xl border border-red-400/50 ring-1 ring-red-300/40 bg-white/40 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(220,38,38,0.18)] p-3 xl:p-4 2xl:p-5 overflow-visible">
+                <div className="relative h-72 md:h-80 xl:h-96 2xl:h-[28rem] rounded-2xl overflow-hidden">
                 <iframe
                   title="AsiaViet Standort"
                   className="absolute inset-0 w-full h-full"
@@ -195,17 +204,17 @@ export default function Home() {
             </div>
             {/* Reviews */}
             <div className="flex flex-col gap-5">
-              <div className="rounded-3xl border border-amber-400/50 ring-1 ring-amber-300/40 bg-white/40 backdrop-blur-2xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(245,158,11,0.18)]">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-amber-900/70">Kundenstimmen</div>
+              <div className="rounded-3xl border border-amber-400/50 ring-1 ring-amber-300/40 bg-white/40 backdrop-blur-2xl p-6 xl:p-7 2xl:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(245,158,11,0.18)]">
+                <div className="mb-2 text-xs xl:text-sm font-semibold uppercase tracking-wide text-amber-900/70">Kundenstimmen</div>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1 text-yellow-500">
-                    <Star className="w-5 h-5" />
-                    <Star className="w-5 h-5" />
-                    <Star className="w-5 h-5" />
-                    <Star className="w-5 h-5" />
-                    <StarHalf className="w-5 h-5" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
+                    <StarHalf className="w-5 h-5 xl:w-6 xl:h-6" />
                   </div>
-                  <span className="text-sm text-amber-900/90 font-medium">4.6/5 · über 600 Bewertungen</span>
+                  <span className="text-sm xl:text-base 2xl:text-lg text-amber-900/90 font-medium">4.6/5 · über 600 Bewertungen</span>
                 </div>
                 <div className="relative h-56 overflow-hidden">
                   <ul className="animate-scrollY space-y-3 text-amber-950 text-[15px] leading-relaxed">
@@ -215,7 +224,7 @@ export default function Home() {
                         <div className="min-w-0">
                           <div className="text-amber-950 font-semibold">Anna K.</div>
                           <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
-                          <p className="mt-2 text-amber-950">Beste Pho in München. Brühe aromatisch, Portion groß.</p>
+                          <p className="mt-2 text-amber-950">Bester Pho in München. Brühe aromatisch, Portion groß.</p>
                         </div>
                       </div>
                     </li>
@@ -225,7 +234,7 @@ export default function Home() {
                         <div className="min-w-0">
                           <div className="text-amber-950 font-semibold">Marcel R.</div>
                           <div className="text-[11px] text-amber-900/70">letzte Woche</div>
-                          <p className="mt-2 text-amber-950">Sushi sehr frisch, Nigiri ist der Hammer kann ich nur empfehle!.</p>
+                          <p className="mt-2 text-amber-950">Sushi sehr frisch, Nigiri ist der Hammer kann ich nur empfehlen!</p>
                         </div>
                       </div>
                     </li>
@@ -236,7 +245,7 @@ export default function Home() {
                         <div className="min-w-0">
                           <div className="text-amber-900 font-semibold">Anna K.</div>
                           <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
-                          <p className="mt-2 text-amber-900">Beste Pho in München. Brühe aromatisch, Portion groß.</p>
+                          <p className="mt-2 text-amber-900">Mein lieblings Vietnamese in ganz Deutschland!</p>
                         </div>
                       </div>
                     </li>

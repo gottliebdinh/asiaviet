@@ -36,7 +36,7 @@ export default function NavLink({ href, className = '', children }: Props) {
     } catch {
       return false
     }
-  }, [pathname, hash, href, search])
+  }, [pathname, hash, href])
 
   const base = 'relative px-1 py-1 text-amber-900/90 transition-colors'
   const underlineAnim = 'after:content-[""] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-amber-900/80 after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100'
