@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'wide': '1400px', // Custom breakpoint for side decorations (MacBook Pro friendly)
+      },
       fontFamily: {
         asian: ['var(--font-noto)', 'serif'],
         sans: ['var(--font-inter)', 'sans-serif'],

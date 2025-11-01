@@ -5,9 +5,9 @@ import ScrollHint from './components/ScrollHint'
 export default function Home() {
   return (
     <main className="flex flex-col">
-      {/* Vertical text decorations - only show on screens with enough horizontal space */}
-      <div className="hidden xl:block fixed left-16 2xl:left-24 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
-        <div className="text-amber-900/70 text-2xl 2xl:text-3xl font-semibold leading-snug flex flex-col items-center">
+      {/* Vertical text decorations - only show when enough space (1400px+) */}
+      <div className="hidden wide:block fixed left-20 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
+        <div className="text-amber-900/70 text-2xl font-black tracking-wider leading-snug flex flex-col items-center [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.1)]">
           <span>X</span>
           <span>i</span>
           <span>n</span>
@@ -18,8 +18,8 @@ export default function Home() {
           <span>o</span>
         </div>
       </div>
-      <div className="hidden xl:block fixed right-16 2xl:right-24 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:450ms]">
-        <div className="text-amber-900/70 text-2xl 2xl:text-3xl font-semibold leading-snug flex flex-col items-center">
+      <div className="hidden wide:block fixed right-20 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:450ms]">
+        <div className="text-amber-900/70 text-2xl font-black tracking-wider leading-snug flex flex-col items-center [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.1)]">
           <span>C</span>
           <span>ả</span>
           <span>m</span>
@@ -37,7 +37,7 @@ export default function Home() {
             <div className="flex items-center gap-4 mb-4">
               <Image src="/logo.png" alt="AsiaViet Logo" width={160} height={60} className="h-12 w-auto drop-shadow" priority />
             </div>
-            <h1 className="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl font-asian font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl font-asian font-bold leading-tight">
               <span className="text-red-600 drop-shadow-lg shadow-red-500/50">ASIA</span>{' '}
               <span className="text-yellow-500 drop-shadow-lg shadow-yellow-500/50">VIET</span>
             </h1>
@@ -71,19 +71,15 @@ export default function Home() {
               <div className="relative h-72 md:h-80 rounded-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-10 w-64 h-64 bg-gradient-to-br from-red-400/60 via-orange-300/60 to-yellow-300/60 rounded-full blur-3xl"></div>
                 <div className="absolute -bottom-10 -left-8 w-72 h-72 bg-gradient-to-tr from-amber-300/50 to-red-300/50 rounded-full blur-3xl"></div>
-                <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                  <div className="flex items-center gap-3 text-amber-900 mb-2">
-                    <Utensils className="w-5 h-5" />
-                    <span className="text-sm font-semibold">Authentische Küche</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-amber-900 mb-2">
-                    <Fish className="w-5 h-5" />
-                    <span className="text-sm font-semibold">Frisches Sushi</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-amber-900">
-                    <Award className="w-5 h-5" />
-                    <span className="text-sm font-semibold">Beste Qualität</span>
-                  </div>
+                {/* Asian Food Image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Image 
+                    src="/essen.png" 
+                    alt="Vietnamesische & Japanische Küche" 
+                    width={700}
+                    height={560}
+                    className="w-auto h-72 md:h-80 object-contain drop-shadow-2xl"
+                  />
                 </div>
               </div>
             </div>
@@ -269,19 +265,19 @@ export default function Home() {
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <MapPin className="w-6 h-6" aria-hidden="true" />
-                <span className="truncate" title="Bayerstraße 15, 80335 München">Bayerstraße 15, 80335 München</span>
+                <span className="truncate font-bold" title="Bayerstraße 15, 80335 München">Bayerstraße 15, 80335 München</span>
               </div>
             </div>
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <Clock className="w-6 h-6" aria-hidden="true" />
-                <span className="whitespace-nowrap" title="11:00–22:00 Uhr">Täglich 11:00–22:00 Uhr</span>
+                <span className="whitespace-nowrap font-bold" title="11:00–22:00 Uhr">Täglich 11:00–22:00 Uhr</span>
               </div>
             </div>
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <Phone className="w-6 h-6" aria-hidden="true" />
-                <span className="whitespace-nowrap" title="089 59068703">089 59068703</span>
+                <span className="whitespace-nowrap font-bold" title="089 59068703">089 59068703</span>
               </div>
             </div>
           </div>

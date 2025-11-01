@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: 'Authentic Vietnamese and Asian cuisine',
   icons: {
     icon: [
-      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo.png', type: 'image/png' },
     ],
     apple: '/logo.png',
   },
@@ -51,7 +51,7 @@ export default function RootLayout({
               <Image src="/logo.png" alt="AsiaViet Logo" width={140} height={48} className="h-10 xl:h-11 2xl:h-12 w-auto" priority />
             </Link>
             <div className="ml-6 xl:ml-7 2xl:ml-8 flex items-center gap-10 xl:gap-11 2xl:gap-12 text-[17px] xl:text-[18px] 2xl:text-[19px] font-semibold tracking-wide">
-              <NavLink href="/">Home</NavLink>
+              <NavLink href="/#home">Home</NavLink>
               <NavLink href="/#about">Unsere Geschichte</NavLink>
               <NavLink href="/#visit">Besuche uns</NavLink>
               <Link
