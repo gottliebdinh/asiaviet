@@ -54,12 +54,7 @@ export default function RootLayout({
               <NavLink href="/#home">Home</NavLink>
               <NavLink href="/#about">Unsere Geschichte</NavLink>
               <NavLink href="/#visit">Besuche uns</NavLink>
-              <Link
-                href="/menu"
-                className="relative px-3 py-1 rounded-xl text-amber-900 transition-colors hover:bg-transparent after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:rounded-full after:bg-gradient-to-r after:from-rose-500 after:to-orange-400 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-              >
-                Speisekarte
-              </Link>
+              <NavLink href="/menu">Speisekarte</NavLink>
             </div>
           </nav>
         </header>
