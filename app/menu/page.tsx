@@ -1,127 +1,8 @@
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
-
-// Menu data based on the Lieferando HTML
-const menuData = {
-  popular: [
-    { name: 'Pad Thai', category: 'Speziales', price: 'ab 17,00 €' },
-    { name: 'Gebratene Nudeln', category: 'Speziales', price: 'ab 15,00 €' },
-    { name: 'Massaman Curry', category: 'Hauptspeisen', price: 'ab 14,40 €' },
-    { name: 'Mango Curry', category: 'Hauptspeisen', price: 'ab 14,40 €' },
-    { name: 'Gebackenes mit Gemüse', category: 'Hauptspeisen', price: 'ab 15,40 €' },
-  ],
-  sushiMenus: [
-    { name: 'Vegetarisches Menü', price: '17,90 €', description: '6 Avocado Maki, 6 Kappa Maki und 8 Mango Inside Out' },
-    { name: 'Lachs und Tempura Menü', price: '28,70 €', description: '8 Lachs, Avocado Inside Out, 8 Tempura Unagi Power Roll' },
-    { name: 'Menü 3', price: '27,50 €', description: '6 Thunfisch Maki, 8 Lachs Philadelphia Avocado Inside Out und 8 Ebi Philadelphia Inside Out' },
-    { name: 'Menü 4', price: '27,50 €', description: '6 Mango Maki, 8 Lachs Maki, 8 Veggie Philadelphia Gurke Inside Out und 8 Tobiko Roll Inside Out' },
-    { name: 'Menü 5', price: '29,90 €', description: '6 Thunfisch Maki, 8 Lachs Philadelphia Gurke Inside Out, 2 Lachs Nigiri und 2 Ebi Nigiri' },
-    { name: 'Menü (für 2 Personen)', price: '63,50 €', description: '2 Lachs Nigiri, 2 Ebi Nigiri, 6 Kappa Maki, 8 Lachs Philadelphia Gurke Inside Out, 10 Tempura Unagi Power Roll und 10 Tempura Avocado Power Roll' },
-  ],
-  soups: [
-    { name: 'Gemüsesuppe', price: '7,10 €', description: 'mit saisonalem Gemüse' },
-    { name: 'Tom-Kha', price: '7,90 €', description: 'Thai Suppe mit Kokosmilch, Champignons, Limettenblättern und einer Zutat nach Wahl' },
-    { name: 'Tom-Yam', price: '8,40 €', description: 'mit Zitronengras, Garnelen und Limettenblättern' },
-    { name: 'Peking Suppe', price: '7,90 €', description: 'Süß-Sauer-Scharf Suppe mit Hühnerfleisch, Eiern, Morcheln und Pilzen' },
-  ],
-  appetizers: [
-    { name: 'Mini Frühlingsrollen (6 Stück)', price: '4,90 €', description: 'gefüllt mit Gemüse' },
-    { name: 'Sommerrollen (2 Stück)', price: '6,90 €', description: 'mit frischem Gemüse und Reisnudeln' },
-    { name: 'Wan-Tan (6 Stück)', price: '6,90 €', description: 'gedämpfte Teigtaschen mit Garnelen gefüllt' },
-    { name: 'Edamame', price: '4,90 €', description: 'gesalzene grüne Sojabohnen' },
-    { name: 'Gebackene Garnelen (4 Stück)', price: '7,90 €', description: 'knusprig panierte Garnelen' },
-    { name: 'Gyoza (5 Stück)', price: '6,90 €', description: 'japanische Teigtaschen mit Gemüse oder Fleisch' },
-    { name: 'Sate-Spieße (3 Stück)', price: '7,90 €', description: 'gegrillte Hühnchenspieße mit Erdnusssauce' },
-    { name: 'Miso-Suppe', price: '3,90 €', description: 'traditionelle japanische Suppe mit Tofu und Wakame' },
-  ],
-  mainDishes: [
-    { name: 'Gebratener Reis mit Gemüse', price: 'ab 12,90 €', description: 'mit saisonalem Gemüse und Ei' },
-    { name: 'Gebratene Nudeln mit Gemüse', price: 'ab 12,90 €', description: 'mit saisonalem Gemüse' },
-    { name: 'Rotes Curry', price: 'ab 14,40 €', description: 'mit Kokosmilch, Bambus und Thai-Basilikum' },
-    { name: 'Grünes Curry', price: 'ab 14,40 €', description: 'mit Kokosmilch, Bambus und Thai-Basilikum' },
-    { name: 'Massaman Curry', price: 'ab 14,40 €', description: 'mit Kokosmilch, Erdnüssen und Kartoffeln' },
-    { name: 'Mango Curry', price: 'ab 14,40 €', description: 'mit Kokosmilch, frischer Mango und Thai-Basilikum' },
-    { name: 'Panang Curry', price: 'ab 14,40 €', description: 'mit Kokosmilch und Erdnusssauce' },
-    { name: 'Gebratenes Gemüse', price: 'ab 13,40 €', description: 'mit saisonalem Gemüse in Austern- oder süß-saurer Sauce' },
-    { name: 'Gebackenes mit Gemüse', price: 'ab 15,40 €', description: 'knusprig gebacken mit saisonalem Gemüse' },
-    { name: 'Chop-Suey', price: 'ab 13,90 €', description: 'mit Gemüse in heller Sauce' },
-  ],
-  specials: [
-    { name: 'Pho Bo', price: '15,00 €', description: 'vietnamesische Rindfleisch-Nudelsuppe mit Reisnudeln und Kräutern' },
-    { name: 'Pho Ga', price: '14,00 €', description: 'vietnamesische Hühnchen-Nudelsuppe mit Reisnudeln und Kräutern' },
-    { name: 'Bun Bo Nam Bo', price: '15,50 €', description: 'Reisnudeln mit gegrilltem Rindfleisch, Erdnüssen und Kräutern' },
-    { name: 'Pad Thai', price: 'ab 17,00 €', description: 'gebratene Reisnudeln mit Ei, Erdnüssen und Tamarinde' },
-    { name: 'Gebratene Nudeln', price: 'ab 15,00 €', description: 'mit Gemüse nach Wahl' },
-    { name: 'Gebratener Reis', price: 'ab 14,00 €', description: 'mit Gemüse und Ei nach Wahl' },
-    { name: 'Bun Cha Hanoi', price: '16,50 €', description: 'gegrilltes Schweinefleisch mit Reisnudeln und Kräutern' },
-    { name: 'Com Tam', price: '15,50 €', description: 'Reis mit gegrilltem Schweinefleisch und Spiegelei' },
-    { name: 'Banh Xeo', price: '14,90 €', description: 'vietnamesischer Pfannkuchen mit Garnelen und Sprossen' },
-    { name: 'Mi Xao Gion', price: '16,00 €', description: 'knusprige Eiernudeln mit Gemüse und Fleisch nach Wahl' },
-  ],
-  nigiri: [
-    { name: 'Lachs Nigiri (2 Stück)', price: '4,50 €', description: '' },
-    { name: 'Thunfisch Nigiri (2 Stück)', price: '5,00 €', description: '' },
-    { name: 'Ebi Nigiri (2 Stück)', price: '4,00 €', description: '' },
-    { name: 'Avocado Nigiri (2 Stück)', price: '3,50 €', description: '' },
-    { name: 'Tamago Nigiri (2 Stück)', price: '3,00 €', description: '' },
-    { name: 'Unagi Nigiri (2 Stück)', price: '5,50 €', description: '' },
-  ],
-  makiInsideOut: [
-    { name: 'Lachs Avocado Inside Out (8 Stück)', price: '9,50 €', description: '' },
-    { name: 'Thunfisch Avocado Inside Out (8 Stück)', price: '10,00 €', description: '' },
-    { name: 'Ebi Philadelphia Inside Out (8 Stück)', price: '9,50 €', description: '' },
-    { name: 'Lachs Philadelphia Inside Out (8 Stück)', price: '10,00 €', description: '' },
-    { name: 'California Roll Inside Out (8 Stück)', price: '9,00 €', description: 'mit Surimi, Avocado und Gurke' },
-    { name: 'Veggie Philadelphia Inside Out (8 Stück)', price: '8,50 €', description: 'mit Gurke, Avocado und Frischkäse' },
-    { name: 'Mango Inside Out (8 Stück)', price: '8,00 €', description: 'mit frischer Mango' },
-    { name: 'Tobiko Roll Inside Out (8 Stück)', price: '11,00 €', description: 'mit Tobiko (Fischeier)' },
-    { name: 'Sake Cheese Inside Out (8 Stück)', price: '10,50 €', description: 'mit Lachs und Frischkäse' },
-    { name: 'Tempura Ebi Inside Out (8 Stück)', price: '11,50 €', description: 'mit knuspriger Garnele' },
-    { name: 'Spicy Tuna Inside Out (8 Stück)', price: '11,00 €', description: 'mit Thunfisch und scharfer Sauce' },
-    { name: 'Chicken Teriyaki Inside Out (8 Stück)', price: '9,00 €', description: 'mit Hühnchen in Teriyaki-Sauce' },
-    { name: 'Sake Mango Inside Out (8 Stück)', price: '10,50 €', description: 'mit Lachs und Mango' },
-    { name: 'Ebi Tempura Avocado Inside Out (8 Stück)', price: '11,00 €', description: 'mit Tempura-Garnele und Avocado' },
-    { name: 'Rainbow Roll Inside Out (8 Stück)', price: '13,50 €', description: 'mit verschiedenen Fischsorten' },
-    { name: 'Dragon Roll Inside Out (8 Stück)', price: '12,50 €', description: 'mit Unagi und Avocado' },
-    { name: 'Red Dragon Inside Out (8 Stück)', price: '13,00 €', description: 'mit Thunfisch und Avocado' },
-  ],
-  makiInsideOutCrunchy: [
-    { name: 'Tempura Lachs Power Roll (10 Stück)', price: '14,50 €', description: 'knusprig frittiert mit Lachs' },
-    { name: 'Tempura Thunfisch Power Roll (10 Stück)', price: '15,00 €', description: 'knusprig frittiert mit Thunfisch' },
-    { name: 'Tempura Ebi Power Roll (10 Stück)', price: '14,00 €', description: 'knusprig frittiert mit Garnelen' },
-    { name: 'Tempura Unagi Power Roll (10 Stück)', price: '15,50 €', description: 'knusprig frittiert mit Aal' },
-    { name: 'Tempura Avocado Power Roll (10 Stück)', price: '12,50 €', description: 'knusprig frittiert mit Avocado' },
-    { name: 'Tempura California Power Roll (10 Stück)', price: '13,50 €', description: 'knusprig frittiert mit Surimi' },
-    { name: 'Tempura Chicken Power Roll (10 Stück)', price: '13,00 €', description: 'knusprig frittiert mit Hühnchen' },
-    { name: 'Tempura Veggie Power Roll (10 Stück)', price: '12,00 €', description: 'knusprig frittiert mit Gemüse' },
-    { name: 'Tempura Spicy Tuna Power Roll (10 Stück)', price: '15,50 €', description: 'knusprig frittiert mit scharfem Thunfisch' },
-    { name: 'Tempura Philadelphia Power Roll (10 Stück)', price: '14,50 €', description: 'knusprig frittiert mit Lachs und Frischkäse' },
-    { name: 'Tempura Rainbow Power Roll (10 Stück)', price: '16,50 €', description: 'knusprig frittiert mit verschiedenen Fischsorten' },
-    { name: 'Tempura Dragon Power Roll (10 Stück)', price: '16,00 €', description: 'knusprig frittiert mit Unagi' },
-    { name: 'Tempura Mango Power Roll (10 Stück)', price: '13,50 €', description: 'knusprig frittiert mit Mango' },
-    { name: 'Tempura Sake Cheese Power Roll (10 Stück)', price: '15,00 €', description: 'knusprig frittiert mit Lachs und Käse' },
-    { name: 'Tempura Crunchy Chicken Power Roll (10 Stück)', price: '14,00 €', description: 'knusprig frittiert mit Hühnchen' },
-    { name: 'Tempura Spicy Salmon Power Roll (10 Stück)', price: '15,50 €', description: 'knusprig frittiert mit scharfem Lachs' },
-  ],
-  powerRoll: [
-    { name: 'Tempura Unagi Power Roll (10 Stück)', price: '15,50 €', description: 'aus einer Rolle, knusprig frittiert mit Aal' },
-    { name: 'Tempura Avocado Power Roll (10 Stück)', price: '12,50 €', description: 'aus einer Rolle, knusprig frittiert mit Avocado' },
-    { name: 'Tempura Lachs Power Roll (10 Stück)', price: '14,50 €', description: 'aus einer Rolle, knusprig frittiert mit Lachs' },
-    { name: 'Tempura Ebi Power Roll (10 Stück)', price: '14,00 €', description: 'aus einer Rolle, knusprig frittiert mit Garnelen' },
-    { name: 'Tempura California Power Roll (10 Stück)', price: '13,50 €', description: 'aus einer Rolle, knusprig frittiert mit Surimi' },
-  ],
-  drinks: [
-    { name: 'Coca-Cola (0,33l)', price: '3,50 €', description: '' },
-    { name: 'Coca-Cola Zero (0,33l)', price: '3,50 €', description: '' },
-    { name: 'Fanta (0,33l)', price: '3,50 €', description: '' },
-    { name: 'Sprite (0,33l)', price: '3,50 €', description: '' },
-    { name: 'Apfelschorle (0,33l)', price: '3,50 €', description: '' },
-    { name: 'Orangensaft (0,33l)', price: '3,90 €', description: '' },
-    { name: 'Apfelsaft (0,33l)', price: '3,90 €', description: '' },
-    { name: 'Wasser still (0,5l)', price: '3,00 €', description: '' },
-    { name: 'Wasser spritzig (0,5l)', price: '3,00 €', description: '' },
-  ],
-}
+import CategoryNav from '../components/CategoryNav'
+import MobileMenu from '../components/MobileMenu'
+import { menuData } from '../data/menuData'
 
 export default function MenuPage() {
   const categories = [
@@ -139,7 +20,14 @@ export default function MenuPage() {
   ]
 
   return (
-    <main className="flex flex-col min-h-screen">
+    <>
+      {/* Mobile Version */}
+      <div className="md:hidden">
+        <MobileMenu />
+      </div>
+      
+      {/* Desktop Version */}
+      <main className="hidden md:flex flex-col min-h-screen">
       {/* Vertical decorations */}
       <div className="hidden wide:block fixed left-20 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
         <div className="text-amber-900/70 text-2xl font-black tracking-wider leading-snug flex flex-col items-center [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.1)]">
@@ -177,22 +65,7 @@ export default function MenuPage() {
           </div>
 
           {/* Category Navigation Bar */}
-          <nav className="sticky top-28 z-20 rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg p-3 mb-4">
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-              {categories.map((category) => (
-                <a
-                  key={category.id}
-                  href={`#${category.id}`}
-                  className="flex-shrink-0 px-4 py-2.5 text-sm font-semibold text-amber-900 rounded-xl hover:bg-white/80 transition-all duration-200 group whitespace-nowrap"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="group-hover:text-red-600 transition-colors">{category.name}</span>
-                    <span className="text-xs text-amber-900/60 group-hover:text-red-600/60">({category.count})</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </nav>
+          <CategoryNav categories={categories} />
         </div>
       </section>
 
@@ -474,7 +347,8 @@ export default function MenuPage() {
           </p>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
 

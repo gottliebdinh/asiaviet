@@ -12,41 +12,58 @@ type Props = {
 
 export default function NavLink({ href, className = '', children }: Props) {
   const pathname = usePathname()
-  const [hash, setHash] = useState<string>(typeof window !== 'undefined' ? window.location.hash : '')
+  // Store current hash to trigger re-renders
+  const [urlHash, setUrlHash] = useState<string>('')
 
   useEffect(() => {
-    // Update hash immediately on mount and when it changes
-    const updateHash = () => setHash(window.location.hash)
+    if (typeof window === 'undefined') return
+    
+    // Read hash immediately on mount and on pathname change
+    const updateHash = () => {
+      const hash = window.location.hash || ''
+      setUrlHash(hash)
+    }
+    
+    // Read immediately
     updateHash()
     
+    // Force check after a tiny delay (for initial page load with hash)
+    const timeout = setTimeout(updateHash, 0)
+    
     // Listen to hash changes
-    window.addEventListener('hashchange', updateHash)
-    // Also check periodically in case smooth scroll updates hash without firing hashchange
-    const interval = setInterval(updateHash, 150)
+    const handleHashChange = () => {
+      updateHash()
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    
+    // Check periodically
+    const interval = setInterval(updateHash, 100)
     
     return () => {
-      window.removeEventListener('hashchange', updateHash)
+      clearTimeout(timeout)
+      window.removeEventListener('hashchange', handleHashChange)
       clearInterval(interval)
     }
-  }, [])
+  }, [pathname]) // Re-run when pathname changes
 
-  const isActive = useMemo(() => {
-    try {
-      // Section links: active when hash matches
-      if (href.startsWith('/#')) {
-        const targetHash = href.replace('/', '')
-        return hash === targetHash
-      }
-      // Home: active when hash is empty or #home, and on homepage
-      if (href === '/#home' || href === '/') {
-        return pathname === '/' && (!hash || hash === '' || hash === '#' || hash === '#home')
-      }
-      // Other routes: exact path match
-      return pathname === href
-    } catch {
-      return false
-    }
-  }, [pathname, hash, href])
+  // Normalize hash: empty or # means #home
+  const normalizedHash = urlHash === '' || urlHash === '#' ? '#home' : urlHash
+  
+  // Simple logic: directly compare hash with href
+  let isActive = false
+  if (href.startsWith('/#')) {
+    const targetHash = href.replace('/', '')
+    // Normalize target too: / or /#home means #home
+    const normalizedTarget = targetHash === '' || targetHash === '#home' ? '#home' : targetHash
+    isActive = pathname === '/' && normalizedHash === normalizedTarget
+  } else if (href === '/menu') {
+    isActive = pathname === '/menu'
+  } else if (href === '/') {
+    // Home link: active when on / and hash is empty or #home
+    isActive = pathname === '/' && normalizedHash === '#home'
+  } else {
+    isActive = pathname === href
+  }
 
   const base = 'relative px-1 py-1 text-amber-900/90 transition-colors'
   const isMenu = href === '/menu'
@@ -56,17 +73,51 @@ export default function NavLink({ href, className = '', children }: Props) {
   const active = 'after:scale-x-100'
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If it's a hash link, update hash immediately after navigation
+    // If it's a hash link, handle scrolling manually
     if (href.startsWith('/#')) {
+      e.preventDefault()
+      
       const targetHash = href.replace('/', '')
-      // Small delay to let browser update hash first
-      setTimeout(() => {
-        setHash(window.location.hash)
-      }, 100)
+      const targetId = targetHash.replace('#', '')
+      const isHome = targetId === 'home' || targetHash === '#home' || targetHash === ''
+      
+      // If we're not on homepage, navigate first
+      if (pathname !== '/') {
+        // Navigate to homepage with hash - the hash will be in URL after navigation
+        window.location.href = href
+        return
+      }
+      
+      // We're on homepage, scroll to section
+      if (isHome) {
+        // Scroll to top for home
+        window.scrollTo(0, 0)
+        history.pushState(null, '', targetHash || '/')
+        window.dispatchEvent(new HashChangeEvent('hashchange'))
+      } else {
+        // Find the visible element with this id (avoid hidden mobile duplicate)
+        const candidates = Array.from(document.querySelectorAll(`#${targetId}`)) as HTMLElement[]
+        const element = candidates.find((el) => el.offsetParent !== null) || candidates[0] || null
+        if (element) {
+          // Simple scrollIntoView - respects scroll-margin-top automatically
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          
+          // Update hash without page jump
+          history.pushState(null, '', targetHash)
+          window.dispatchEvent(new HashChangeEvent('hashchange'))
+        } else {
+          // Element not found, just update hash
+          history.pushState(null, '', targetHash)
+          window.dispatchEvent(new HashChangeEvent('hashchange'))
+        }
+      }
     } else if (href === '/') {
-      setTimeout(() => {
-        setHash('')
-      }, 100)
+      if (pathname === '/') {
+        e.preventDefault()
+        window.scrollTo(0, 0)
+        history.pushState(null, '', '/#home')
+        window.dispatchEvent(new HashChangeEvent('hashchange'))
+      }
     }
   }
 

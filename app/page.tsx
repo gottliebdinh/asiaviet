@@ -1,10 +1,18 @@
 import Image from 'next/image'
 import { Utensils, Fish, Award, Users, MapPin, Quote, Star, StarHalf, ChevronDown, Clock, Phone } from 'lucide-react'
 import ScrollHint from './components/ScrollHint'
+import MobileHome from './components/MobileHome'
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <>
+      {/* Mobile Version */}
+      <div className="md:hidden">
+        <MobileHome />
+      </div>
+      
+      {/* Desktop Version */}
+      <main className="hidden md:flex flex-col">
       {/* Vertical text decorations - only show when enough space (1400px+) */}
       <div className="hidden wide:block fixed left-20 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
         <div className="text-amber-900/70 text-2xl font-black tracking-wider leading-snug flex flex-col items-center [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.1)]">
@@ -283,6 +291,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
