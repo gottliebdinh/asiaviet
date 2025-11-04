@@ -27,7 +27,7 @@ export default function MenuPage() {
       </div>
       
       {/* Desktop Version */}
-      <main className="hidden md:flex flex-col min-h-screen">
+      <main className="hidden md:block min-h-screen">
       {/* Vertical decorations */}
       <div className="hidden wide:block fixed left-20 top-1/2 z-10 pointer-events-none animate-slideDown [animation-delay:300ms]">
         <div className="text-amber-900/70 text-2xl font-black tracking-wider leading-snug flex flex-col items-center [text-shadow:_0_1px_3px_rgb(0_0_0_/_0.1)]">
@@ -63,11 +63,11 @@ export default function MenuPage() {
               Entdecke die Vielfalt der vietnamesischen und japanischen Küche – von traditioneller Pho bis zu frischem Sushi.
             </p>
           </div>
-
-          {/* Category Navigation Bar */}
-          <CategoryNav categories={categories} />
         </div>
       </section>
+
+      {/* Category Navigation Bar - Outside container for sticky to work */}
+      <CategoryNav categories={categories} />
 
       {/* Popular Items */}
       <section id="popular" className="py-12 scroll-mt-28">
