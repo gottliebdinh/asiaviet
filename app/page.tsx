@@ -1,7 +1,28 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Utensils, Fish, Award, Users, MapPin, Quote, Star, StarHalf, ChevronDown, Clock, Phone } from 'lucide-react'
 import ScrollHint from './components/ScrollHint'
 import MobileHome from './components/MobileHome'
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'AsiaViet Restaurant München - Authentische vietnamesische und japanische Küche direkt am Hauptbahnhof. Frische Pho, Sushi, Frühlingsrollen. Täglich 11:00-22:00 Uhr geöffnet.',
+  openGraph: {
+    title: 'AsiaViet Restaurant München - Vietnamesische & Japanische Küche',
+    description: 'Authentische vietnamesische und japanische Küche im Herzen Münchens. Direkt am Hauptbahnhof. Pho, Sushi, Frühlingsrollen & mehr.',
+    images: [
+      {
+        url: '/essen.png',
+        width: 1200,
+        height: 630,
+        alt: 'Vietnamesische und Japanische Küche bei AsiaViet München',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://asiaviet.de',
+  },
+}
 
 export default function Home() {
   return (
@@ -43,7 +64,7 @@ export default function Home() {
           {/* Left: Logo, Title, CTA */}
           <div className="text-left animate-fadeUp [animation-delay:100ms]">
             <div className="flex items-center gap-4 mb-4">
-              <Image src="/logo.png" alt="AsiaViet Logo" width={160} height={60} className="h-12 w-auto drop-shadow" priority />
+              <Image src="/logo.png" alt="AsiaViet Restaurant München Logo - Vietnamesische und Japanische Küche" width={160} height={60} className="h-12 w-auto drop-shadow" priority />
             </div>
             <h1 className="text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl font-asian font-bold leading-tight">
               <span className="text-red-600 drop-shadow-lg shadow-red-500/50">ASIA</span>{' '}
@@ -54,22 +75,22 @@ export default function Home() {
             </p>
             {/* Rating (moved above CTA) */}
             <div className="mt-6 flex items-center gap-3 text-amber-900">
-              <div className="flex items-center">
-                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
-                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
-                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
-                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
-                <StarHalf className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" />
+              <div className="flex items-center" aria-label="4.6 von 5 Sternen">
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" aria-hidden="true" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" aria-hidden="true" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" aria-hidden="true" />
+                <Star className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" aria-hidden="true" />
+                <StarHalf className="w-5 h-5 xl:w-6 xl:h-6 text-yellow-500" aria-hidden="true" />
               </div>
               <span className="text-sm xl:text-base 2xl:text-lg font-medium">4.6/5 · über 600 Bewertungen</span>
             </div>
             <div className="mt-6 animate-fadeUp [animation-delay:320ms]">
-              <button className="group relative inline-flex items-center gap-3 px-8 py-3 xl:px-10 xl:py-4 2xl:px-12 2xl:py-5 overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white rounded-2xl text-lg xl:text-xl 2xl:text-2xl font-semibold shadow-2xl hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-500 border border-white/30 hover:border-white/50">
+              <a href="/menu" className="group relative inline-flex items-center gap-3 px-8 py-3 xl:px-10 xl:py-4 2xl:px-12 2xl:py-5 overflow-hidden bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-white rounded-2xl text-lg xl:text-xl 2xl:text-2xl font-semibold shadow-2xl hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-500 border border-white/30 hover:border-white/50">
                 Speisekarte ansehen
-                <svg className="w-5 h-5 xl:w-6 xl:h-6 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 xl:w-6 xl:h-6 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -83,10 +104,11 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Image 
                     src="/essen.png" 
-                    alt="Vietnamesische & Japanische Küche" 
+                    alt="Vietnamesische und Japanische Küche - Pho, Sushi und traditionelle Gerichte bei AsiaViet München" 
                     width={700}
                     height={560}
                     className="w-auto h-72 md:h-80 object-contain drop-shadow-2xl"
+                    priority
                   />
                 </div>
               </div>
@@ -95,7 +117,7 @@ export default function Home() {
         </div>
         {/* Scroll hint */}
         <ScrollHint targetId="about" className="absolute left-1/2 -translate-x-1/2 bottom-6 inline-flex items-center justify-center transition-opacity hover:opacity-90">
-          <ChevronDown className="w-7 h-7 text-amber-900/80 animate-float" />
+          <ChevronDown className="w-7 h-7 text-amber-900/80 animate-float" aria-hidden="true" />
         </ScrollHint>
       </section>
 
@@ -108,6 +130,7 @@ export default function Home() {
             alt="" 
             fill
             className="object-contain object-center"
+            aria-hidden="true"
           />
         </div>
         <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 xl:px-12 2xl:px-16 relative z-10">
@@ -124,7 +147,7 @@ export default function Home() {
             {/* Top left card */}
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-2 text-amber-900">
-                <Utensils className="w-5 h-5 xl:w-6 xl:h-6" />
+                <Utensils className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                 <span className="font-semibold xl:text-lg 2xl:text-xl">Vietnamesische Klassiker</span>
               </div>
               <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Von aromatischer Pho über knusprige Frühlingsrollen bis zu frischen Sommerrollen – unsere vietnamesischen Klassiker werden nach traditionellen Rezepten zubereitet und mit modernem Flair serviert.</p>
@@ -136,7 +159,7 @@ export default function Home() {
               <div className="relative h-56 lg:h-[320px] xl:h-[380px] 2xl:h-[450px] flex-grow">
                 <Image 
                   src="/chef.png" 
-                  alt="Unsere Chefin" 
+                  alt="Unsere Chefin - Familienbetrieb AsiaViet München" 
                   fill
                   className="object-cover"
                 />
@@ -144,7 +167,7 @@ export default function Home() {
               {/* Familienbetrieb section - takes 1/4 of card height */}
               <div className="p-4 xl:p-5 2xl:p-6 bg-white/60 backdrop-blur">
                 <div className="flex items-center gap-3 mb-1.5 text-amber-900">
-                  <Users className="w-5 h-5 xl:w-6 xl:h-6" />
+                  <Users className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                   <span className="font-semibold xl:text-lg 2xl:text-xl">Familienbetrieb</span>
                 </div>
                 <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Herzlich, bodenständig und persönlich – Gastfreundschaft aus Tradition.</p>
@@ -154,7 +177,7 @@ export default function Home() {
             {/* Top right card */}
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-2 text-amber-900">
-                <Fish className="w-5 h-5 xl:w-6 xl:h-6" />
+                <Fish className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                 <span className="font-semibold xl:text-lg 2xl:text-xl">Sushi & Frische</span>
               </div>
               <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Feinste Auswahl an Sushi, täglich frisch zubereitet. Von klassischen Nigiri und Maki bis zu kreativen Spezialrollen – jedes Stück wird mit Präzision und Liebe zum Detail gefertigt.</p>
@@ -163,7 +186,7 @@ export default function Home() {
             {/* Bottom left card */}
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-2 text-amber-900">
-                <Award className="w-5 h-5 xl:w-6 xl:h-6" />
+                <Award className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                 <span className="font-semibold xl:text-lg 2xl:text-xl">Beste Qualität</span>
               </div>
               <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg">Wir setzen auf sorgfältig ausgewählte Zutaten, hohe Standards und liebevolle Zubereitung. Qualität steht bei uns an erster Stelle – das schmecken Sie in jedem Bissen.</p>
@@ -172,7 +195,7 @@ export default function Home() {
             {/* Bottom right card */}
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-5 xl:p-6 2xl:p-8 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-2 text-amber-900">
-                <Quote className="w-5 h-5 xl:w-6 xl:h-6" />
+                <Quote className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                 <span className="font-semibold xl:text-lg 2xl:text-xl">Unser Versprechen</span>
               </div>
               <p className="text-amber-900/80 text-sm xl:text-base 2xl:text-lg italic">&ldquo;Gutes Essen verbindet Menschen und Kulturen. Mit jedem Gericht bringen wir ein Stück Vietnam nach München – authentisch, herzlich und mit Leidenschaft gekocht.&rdquo;</p>
@@ -197,11 +220,12 @@ export default function Home() {
               <div className="rounded-3xl border border-red-400/50 ring-1 ring-red-300/40 bg-white/40 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(220,38,38,0.18)] p-3 xl:p-4 2xl:p-5 overflow-visible">
                 <div className="relative h-72 md:h-80 xl:h-96 2xl:h-[28rem] rounded-2xl overflow-hidden">
                 <iframe
-                  title="AsiaViet Standort"
+                  title="AsiaViet Restaurant Standort - Bayerstraße 15, 80335 München"
                   className="absolute inset-0 w-full h-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   src="https://www.google.com/maps?q=Bayerstraße%2015,%2080335%20München&output=embed"
+                  aria-label="Karte zeigt AsiaViet Restaurant Standort in München"
                 />
                 </div>
               </div>
@@ -211,12 +235,12 @@ export default function Home() {
               <div className="rounded-3xl border border-amber-400/50 ring-1 ring-amber-300/40 bg-white/40 backdrop-blur-2xl p-6 xl:p-7 2xl:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06),0_0_60px_rgba(245,158,11,0.18)]">
                 <div className="mb-2 text-xs xl:text-sm font-semibold uppercase tracking-wide text-amber-900/70">Kundenstimmen</div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1 text-yellow-500">
-                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
-                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
-                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
-                    <Star className="w-5 h-5 xl:w-6 xl:h-6" />
-                    <StarHalf className="w-5 h-5 xl:w-6 xl:h-6" />
+                  <div className="flex items-center gap-1 text-yellow-500" aria-label="4.6 von 5 Sternen Bewertung">
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
+                    <Star className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
+                    <StarHalf className="w-5 h-5 xl:w-6 xl:h-6" aria-hidden="true" />
                   </div>
                   <span className="text-sm xl:text-base 2xl:text-lg text-amber-900/90 font-medium">4.6/5 · über 600 Bewertungen</span>
                 </div>
@@ -224,7 +248,7 @@ export default function Home() {
                   <ul className="animate-scrollY space-y-3 text-amber-950 text-[15px] leading-relaxed">
                     <li className="rounded-2xl bg-white/80 border border-white/60 px-4 py-3 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" />
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" aria-hidden="true"></div>
                         <div className="min-w-0">
                           <div className="text-amber-950 font-semibold">Anna K.</div>
                           <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
@@ -234,7 +258,7 @@ export default function Home() {
                     </li>
                     <li className="rounded-2xl bg-white/80 border border-white/60 px-4 py-3 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" />
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-700 to-amber-500" aria-hidden="true"></div>
                         <div className="min-w-0">
                           <div className="text-amber-950 font-semibold">Marcel R.</div>
                           <div className="text-[11px] text-amber-900/70">letzte Woche</div>
@@ -245,7 +269,7 @@ export default function Home() {
                     {/* duplicate for seamless loop */}
                     <li className="rounded-2xl bg-white/75 border border-white/60 px-4 py-3 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" />
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" aria-hidden="true"></div>
                         <div className="min-w-0">
                           <div className="text-amber-900 font-semibold">Anna K.</div>
                           <div className="text-[11px] text-amber-900/70">vor 2 Tagen</div>
@@ -255,7 +279,7 @@ export default function Home() {
                     </li>
                     <li className="rounded-2xl bg-white/75 border border-white/60 px-4 py-3 shadow-sm">
                       <div className="flex items-start gap-3">
-                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" />
+                        <div className="mt-0.5 h-10 w-1 rounded-full bg-gradient-to-b from-amber-800 to-amber-600" aria-hidden="true"></div>
                         <div className="min-w-0">
                           <div className="text-amber-900 font-semibold">Gottlieb D.</div>
                           <div className="text-[11px] text-amber-900/70">letzte Woche</div>
@@ -273,19 +297,19 @@ export default function Home() {
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <MapPin className="w-6 h-6" aria-hidden="true" />
-                <span className="truncate font-bold" title="Bayerstraße 15, 80335 München">Bayerstraße 15, 80335 München</span>
+                <address className="truncate font-bold not-italic" title="Bayerstraße 15, 80335 München">Bayerstraße 15, 80335 München</address>
               </div>
             </div>
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <Clock className="w-6 h-6" aria-hidden="true" />
-                <span className="whitespace-nowrap font-bold" title="11:00–22:00 Uhr">Täglich 11:00–22:00 Uhr</span>
+                <time className="whitespace-nowrap font-bold" dateTime="11:00" title="Täglich 11:00–22:00 Uhr">Täglich 11:00–22:00 Uhr</time>
               </div>
             </div>
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <Phone className="w-6 h-6" aria-hidden="true" />
-                <span className="whitespace-nowrap font-bold" title="089 59068703">089 59068703</span>
+                <a href="tel:+498959068703" className="whitespace-nowrap font-bold hover:text-red-600 transition-colors" title="089 59068703">089 59068703</a>
               </div>
             </div>
           </div>

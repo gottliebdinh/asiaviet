@@ -1,8 +1,29 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
 import CategoryNav from '../components/CategoryNav'
 import MobileMenu from '../components/MobileMenu'
 import { menuData } from '../data/menuData'
+
+export const metadata: Metadata = {
+  title: 'Speisekarte',
+  description: 'Unsere komplette Speisekarte: Vietnamesische Pho, frisches Sushi, Frühlingsrollen, Nigiri, Maki, Power Rolls und mehr. Alle Preise und Zutaten im Überblick.',
+  openGraph: {
+    title: 'Speisekarte - AsiaViet Restaurant München',
+    description: 'Entdecke unsere komplette Speisekarte mit vietnamesischen und japanischen Spezialitäten. Pho, Sushi, Frühlingsrollen und mehr.',
+    images: [
+      {
+        url: '/essen.png',
+        width: 1200,
+        height: 630,
+        alt: 'AsiaViet Speisekarte - Vietnamesische und Japanische Gerichte',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://asiaviet.de/menu',
+  },
+}
 
 export default function MenuPage() {
   const categories = [
@@ -75,7 +96,7 @@ export default function MenuPage() {
           <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-amber-900 mb-8">Beliebt</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {menuData.popular.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
               >
@@ -84,7 +105,7 @@ export default function MenuPage() {
                 </div>
                 <h3 className="text-xl font-bold text-amber-900 mb-2">{item.name}</h3>
                 <p className="text-2xl font-bold text-red-600">{item.price}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -99,7 +120,7 @@ export default function MenuPage() {
           </div>
           <div className="space-y-4">
             {menuData.sushiMenus.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -112,7 +133,7 @@ export default function MenuPage() {
                     <p className="text-2xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -127,7 +148,7 @@ export default function MenuPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.soups.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -136,7 +157,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 <p className="text-amber-900/80">{item.description}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -151,7 +172,7 @@ export default function MenuPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.appetizers.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -160,7 +181,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -175,7 +196,7 @@ export default function MenuPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.mainDishes.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -184,7 +205,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -199,7 +220,7 @@ export default function MenuPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.specials.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -208,7 +229,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -224,7 +245,7 @@ export default function MenuPage() {
           <p className="text-amber-900/70 mb-8 italic">Es werden jeweils 2 Stück serviert.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {menuData.nigiri.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -232,7 +253,7 @@ export default function MenuPage() {
                   <h3 className="text-lg font-bold text-amber-900">{item.name}</h3>
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -248,7 +269,7 @@ export default function MenuPage() {
           <p className="text-amber-900/70 mb-8 italic">Es werden jeweils 8 Stück serviert. Alle Inside Out werden mit Sesam zubereitet.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.makiInsideOut.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -257,7 +278,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -273,7 +294,7 @@ export default function MenuPage() {
           <p className="text-amber-900/70 mb-8 italic">Es werden jeweils 10 Stück serviert.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.makiInsideOutCrunchy.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -282,7 +303,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -298,7 +319,7 @@ export default function MenuPage() {
           <p className="text-amber-900/70 mb-8 italic">Es werden jeweils 10 Stück aus einer Rolle serviert.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {menuData.powerRoll.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -307,7 +328,7 @@ export default function MenuPage() {
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
                 {item.description && <p className="text-amber-900/80">{item.description}</p>}
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -322,7 +343,7 @@ export default function MenuPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {menuData.drinks.map((item, index) => (
-              <div 
+              <article 
                 key={index}
                 className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur p-6 shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -330,7 +351,7 @@ export default function MenuPage() {
                   <h3 className="text-lg font-bold text-amber-900">{item.name}</h3>
                   <p className="text-xl font-bold text-red-600 whitespace-nowrap">{item.price}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -351,4 +372,3 @@ export default function MenuPage() {
     </>
   )
 }
-

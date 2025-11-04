@@ -7,6 +7,7 @@ import SmoothScroll from './components/SmoothScroll'
 import NavLink from './components/NavLink'
 import SectionObserver from './components/SectionObserver'
 import MobileNav from './components/MobileNav'
+import StructuredData from './components/StructuredData'
 
 const notoSans = Noto_Sans_SC({ 
   subsets: ['latin'],
@@ -21,13 +22,74 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'AsiaViet Restaurant',
-  description: 'Authentic Vietnamese and Asian cuisine',
+  metadataBase: new URL('https://asiaviet.de'), // TODO: Replace with actual domain
+  title: {
+    default: 'AsiaViet Restaurant München - Vietnamesische & Japanische Küche',
+    template: '%s | AsiaViet Restaurant München'
+  },
+  description: 'Authentische vietnamesische und japanische Küche im Herzen Münchens. Direkt am Hauptbahnhof. Pho, Sushi, Frühlingsrollen & mehr. Frisch zubereitet, täglich 11:00-22:00 Uhr.',
+  keywords: [
+    'Vietnamesisches Restaurant München',
+    'Asiatisches Restaurant München',
+    'Pho München',
+    'Sushi München',
+    'Vietnamesische Küche',
+    'Japanische Küche',
+    'Restaurant Hauptbahnhof München',
+    'Frühlingsrollen München',
+    'AsiaViet',
+    'München Restaurant',
+    'Vietnamesisch Essen München'
+  ],
+  authors: [{ name: 'AsiaViet Restaurant' }],
+  creator: 'AsiaViet Restaurant',
+  publisher: 'AsiaViet Restaurant',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://asiaviet.de',
+    siteName: 'AsiaViet Restaurant München',
+    title: 'AsiaViet Restaurant München - Vietnamesische & Japanische Küche',
+    description: 'Authentische vietnamesische und japanische Küche im Herzen Münchens. Direkt am Hauptbahnhof. Pho, Sushi, Frühlingsrollen & mehr.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'AsiaViet Restaurant München Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AsiaViet Restaurant München - Vietnamesische & Japanische Küche',
+    description: 'Authentische vietnamesische und japanische Küche im Herzen Münchens. Direkt am Hauptbahnhof.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/logo.png', type: 'image/png' },
     ],
     apple: '/logo.png',
+  },
+  alternates: {
+    canonical: 'https://asiaviet.de',
   },
 }
 
@@ -39,6 +101,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={`${notoSans.variable} ${inter.variable} font-sans relative min-h-screen bg-gradient-to-br from-amber-100 via-orange-100 to-orange-200`}>
+        <StructuredData />
         <SmoothScroll />
         <SectionObserver />
         {/* Mobile Navigation */}

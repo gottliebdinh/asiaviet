@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asiaviet.de/sitemap.xml
+
