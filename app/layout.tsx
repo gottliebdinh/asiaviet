@@ -8,6 +8,7 @@ import NavLink from './components/NavLink'
 import SectionObserver from './components/SectionObserver'
 import MobileNav from './components/MobileNav'
 import StructuredData from './components/StructuredData'
+import Footer from './components/Footer'
 
 const notoSans = Noto_Sans_SC({ 
   subsets: ['latin'],
@@ -124,7 +125,10 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <div className="md:pt-4 relative z-10">{children}</div>
+        <div className="md:pt-4 relative z-10 flex flex-col min-h-screen">
+          <div className="flex-grow">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   )

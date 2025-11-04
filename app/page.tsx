@@ -309,7 +309,7 @@ export default function Home() {
             <div className="rounded-2xl border border-white/40 bg-white/40 backdrop-blur shadow-sm overflow-hidden">
               <div className="flex items-center justify-center gap-3 h-16 px-4 text-amber-900">
                 <Phone className="w-6 h-6" aria-hidden="true" />
-                <a href="tel:+498959068703" className="whitespace-nowrap font-bold hover:text-red-600 transition-colors" title="089 59068703">089 59068703</a>
+                <a href="tel:+4915738848357" className="whitespace-nowrap font-bold hover:text-red-600 transition-colors" title="+49 157 38848357">+49 157 38848357</a>
               </div>
             </div>
           </div>

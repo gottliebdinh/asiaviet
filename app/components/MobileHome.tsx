@@ -211,7 +211,7 @@ export default function MobileHome() {
             <div className="rounded-xl border border-white/40 bg-white/40 backdrop-blur shadow-sm p-3">
               <div className="flex items-center gap-2 text-amber-900">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <span className="text-sm font-bold">089 59068703</span>
+                <a href="tel:+4915738848357" className="text-sm font-bold hover:text-red-600 transition-colors">+49 157 38848357</a>
               </div>
             </div>
           </div>
