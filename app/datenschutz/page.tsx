@@ -92,7 +92,7 @@ export default function DatenschutzPage() {
               </h2>
               <p>
                 Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited (Gordon House, 
-                Barrow Street, Dublin 4, Irland; „Google"). Google Analytics verwendet Cookies, die auf Ihrem Endgerät 
+                Barrow Street, Dublin 4, Irland; &ldquo;Google&rdquo;). Google Analytics verwendet Cookies, die auf Ihrem Endgerät 
                 gespeichert werden und die eine Analyse der Nutzung der Website ermöglichen.
               </p>
               <p className="mt-3">
