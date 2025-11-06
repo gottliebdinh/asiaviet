@@ -23,7 +23,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://asiaviet.de'), // TODO: Replace with actual domain
+  metadataBase: new URL('https://asiaviet.de'),
   title: {
     default: 'AsiaViet Restaurant München - Vietnamesische & Japanische Küche',
     template: '%s | AsiaViet Restaurant München'
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     apple: '/logo.png',
   },
   alternates: {
-    canonical: 'https://asiaviet.de',
+    canonical: '/',
   },
 }
 

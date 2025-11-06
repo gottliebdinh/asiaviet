@@ -4,6 +4,9 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Impressum',
   description: 'Impressum des AsiaViet Restaurants München',
+  alternates: {
+    canonical: '/impressum',
+  },
   robots: {
     index: false,
     follow: false,

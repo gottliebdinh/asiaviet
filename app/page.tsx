@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://asiaviet.de',
+    canonical: '/',
   },
 }
 

@@ -4,6 +4,9 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung',
   description: 'Datenschutzerklärung des AsiaViet Restaurants München',
+  alternates: {
+    canonical: '/datenschutz',
+  },
   robots: {
     index: false,
     follow: false,
