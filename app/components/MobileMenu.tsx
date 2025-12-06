@@ -7,32 +7,34 @@ export default function MobileMenu() {
   const [activeCategory, setActiveCategory] = useState<string>('popular')
 
   const categories = [
-    { id: 'popular', name: 'Beliebt', count: menuData.popular.length },
-    { id: 'sushi-menus', name: 'Sushi Menüs', count: menuData.sushiMenus.length },
     { id: 'soups', name: 'Suppen', count: menuData.soups.length },
     { id: 'appetizers', name: 'Vorspeisen', count: menuData.appetizers.length },
     { id: 'main-dishes', name: 'Hauptspeisen', count: menuData.mainDishes.length },
-    { id: 'specials', name: 'Speziales', count: menuData.specials.length },
+    { id: 'specials', name: 'Spezielles', count: menuData.specials.length },
     { id: 'nigiri', name: 'Nigiri', count: menuData.nigiri.length },
+    { id: 'maki', name: 'Maki', count: menuData.maki.length },
     { id: 'maki-inside-out', name: 'Maki Inside Out', count: menuData.makiInsideOut.length },
-    { id: 'maki-crunchy', name: 'Maki Crunchy', count: menuData.makiInsideOutCrunchy.length },
+    { id: 'sushi-rolls', name: 'Sushi Rollen', count: menuData.sushiRolls.length },
     { id: 'power-roll', name: 'Power Roll', count: menuData.powerRoll.length },
-    { id: 'drinks', name: 'Getränke', count: menuData.drinks.length },
+    { id: 'sushi-menus', name: 'Sushi Menüs', count: menuData.sushiMenus.length },
+    { id: 'box-to-go', name: 'Box to Go', count: menuData.boxToGo.length },
+    { id: 'drinks', name: 'Getränke', count: menuData.drinks?.length || 0 },
   ]
 
   const renderSection = (sectionId: string) => {
     const dataMap: { [key: string]: any[] } = {
-      'popular': menuData.popular,
-      'sushi-menus': menuData.sushiMenus,
       'soups': menuData.soups,
       'appetizers': menuData.appetizers,
       'main-dishes': menuData.mainDishes,
       'specials': menuData.specials,
       'nigiri': menuData.nigiri,
+      'maki': menuData.maki,
       'maki-inside-out': menuData.makiInsideOut,
-      'maki-crunchy': menuData.makiInsideOutCrunchy,
+      'sushi-rolls': menuData.sushiRolls,
       'power-roll': menuData.powerRoll,
-      'drinks': menuData.drinks,
+      'sushi-menus': menuData.sushiMenus,
+      'box-to-go': menuData.boxToGo,
+      'drinks': menuData.drinks || [],
     }
 
     const items = dataMap[sectionId] || []
@@ -49,7 +51,13 @@ export default function MobileMenu() {
           {items.map((item: any, index: number) => (
             <div
               key={index}
-              className="rounded-xl border border-white/40 bg-white/40 backdrop-blur p-4 shadow-sm"
+              className={`rounded-xl border border-white/40 bg-white/40 backdrop-blur shadow-sm ${
+                item.options && item.options.length > 0 
+                  ? 'p-5' 
+                  : item.description 
+                    ? 'p-4' 
+                    : 'p-4'
+              }`}
             >
               {item.category && (
                 <div className="text-xs font-semibold uppercase tracking-wide text-amber-900/70 mb-1">
@@ -57,11 +65,31 @@ export default function MobileMenu() {
                 </div>
               )}
               <div className="flex justify-between items-start gap-3 mb-2">
-                <h3 className="text-base font-bold text-amber-900 flex-1">{item.name}</h3>
-                <p className="text-lg font-bold text-red-600 whitespace-nowrap">{item.price}</p>
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-amber-900">{item.name}</h3>
+                </div>
+                {item.price && <p className="text-lg font-bold text-red-600 whitespace-nowrap">{item.price} €</p>}
               </div>
               {item.description && (
-                <p className="text-sm text-amber-900/80 leading-relaxed">{item.description}</p>
+                <p className="text-sm text-amber-900/80 leading-relaxed mb-2">{item.description}</p>
+              )}
+              {item.options && item.options.length > 0 && (
+                <div className="mt-2 space-y-1">
+                  {item.options.map((option: any, optIndex: number) => (
+                    <div key={optIndex} className="flex justify-between items-center text-xs">
+                      <span className="text-amber-900/80">{option.label}</span>
+                      <div className="flex gap-1">
+                        <span className="text-red-600 font-semibold">{option.price} €</span>
+                        {option.priceCrunchy && <span className="text-red-600 font-semibold">/ {option.priceCrunchy} €</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {item.priceCrunchy && !item.options && (
+                <div className="mt-2 text-xs text-red-600 font-semibold">
+                  Crunchy: {item.priceCrunchy} €
+                </div>
               )}
             </div>
           ))}
